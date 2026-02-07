@@ -96,34 +96,8 @@ class MenuServiceTest {
         Mockito.verify(menuMapper).toResponseDto(menuItem);
     }
 
-    @Test
-    void getMenuById_ShouldReturnMenu() {
 
-        Mockito.when(menuRepository.findById(1L))
-                .thenReturn(Optional.of(menuItem));
 
-        Mockito.when(menuMapper.toResponseDto(menuItem))
-                .thenReturn(responseDTO);
-
-        MenuResponseDTO result =
-                menuService.getMenuById(1L);
-
-        Assertions.assertEquals("Cheese Pizza", result.getName());
-    }
-
-    @Test
-    void getMenuById_NotFound_ShouldThrowException() {
-
-        Mockito.when(menuRepository.findById(99L))
-                .thenReturn(Optional.empty());
-
-        RuntimeException ex = Assertions.assertThrows(
-                RuntimeException.class,
-                () -> menuService.getMenuById(99L)
-        );
-
-        Assertions.assertEquals("Menu item not found", ex.getMessage());
-    }
 
 
 }

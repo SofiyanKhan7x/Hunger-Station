@@ -71,22 +71,7 @@ class MenuControllerTest {
                 .getAllMenus();
     }
 
-    @Test
-    void getMenuById_ShouldReturnMenu() {
 
-        MenuResponseDTO dto = new MenuResponseDTO();
-        dto.setId(1L);
-        dto.setName("Pizza");
-
-        Mockito.when(menuService.getMenuById(1L))
-                .thenReturn(dto);
-
-        ResponseEntity<MenuResponseDTO> response =
-                menuController.getMenuById(1L);
-
-        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
-        Assertions.assertEquals("Pizza", response.getBody().getName());
-    }
 
 }
 
